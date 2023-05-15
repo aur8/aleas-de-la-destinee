@@ -18,16 +18,12 @@ double generate_uniform_real() {
 }
 
 int generate_geometric(double success_prob) {
-  // std::random_device rd;
-  // std::mt19937 gen(rd());
-  // std::uniform_real_distribution<double> dist(0.0, 1.0);
-
-  // double u = dist(gen); // Génère un nombre aléatoire entre 0 et 1
 
   srand(static_cast<unsigned int>(
       time(0))); // Initialisation du générateur de nombres aléatoires
 
-  double u = generate_uniform_real();
+  double u = generate_uniform_real(); // génère un nombre aléatoire suivant une
+                                      // loi uniforme
 
   // Utilise la méthode inverse de la fonction de répartition de la loi
   // géométrique
@@ -37,9 +33,6 @@ int generate_geometric(double success_prob) {
 }
 
 int generate_poisson(double mean) {
-  // std::random_device rd;
-  // std::mt19937 gen(rd());
-  // std::uniform_real_distribution<double> dist(0.0, 1.0);
 
   srand(static_cast<unsigned int>(
       time(0))); // Initialisation du générateur de nombres aléatoires
@@ -50,11 +43,27 @@ int generate_poisson(double mean) {
 
   do {
     k++;
-    double u = generate_uniform_real();
+    double u = generate_uniform_real(); // génère un nombre aléatoire suivant
+                                        // une loi uniforme
     p *= u;
   } while (p >= L);
 
   return k - 1;
+}
+
+double generate_gamma(double alpha, double beta) {
+  srand(static_cast<unsigned int>(
+      time(0))); // Initialisation du générateur de nombres aléatoires
+
+  // méthode de la somme de variables aléatoires exponentielles
+  double sum = 0.0;
+  for (int i = 0; i < alpha; ++i) {
+    double u = generate_uniform_real(); // génère un nombre aléatoire suivant
+                                        // une loi uniforme
+    sum += -std::log(u);
+  }
+
+  return sum / beta;
 }
 
 int main() {
@@ -68,6 +77,12 @@ int main() {
   double mean = 3.0; // Moyenne de la loi de Poisson
   int random_value_poisson = generate_poisson(mean);
   std::cout << random_value_poisson << std::endl;
+
+  // GAMMA
+  double alpha = 2.0; // Paramètre de forme de la loi gamma
+  double beta = 1.0;  // Inverse de la moyenne de la loi gamma
+  double random_value_gamma = generate_gamma(alpha, beta);
+  std::cout << random_value_gamma << std::endl;
 
   return 0;
 }
