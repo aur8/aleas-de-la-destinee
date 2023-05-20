@@ -1,12 +1,9 @@
-struct personnage {
-  int m_pdv;
-  int m_force;
-  int m_constitution;
-  int m_agilite;
+#include "include/player.h"
+#include "include/story.h"
 
-  personnage(int pdv, int force, int constitution, int agilite)
-      : m_pdv(pdv), m_force(force), m_constitution(constitution),
-        m_agilite(agilite) {}
-};
-
-int main() {}
+int main() {
+    Player player1;
+    story_begin();
+    player1.generate_name();
+    player1.generate_stats();
+}
