@@ -20,6 +20,12 @@ double generate_uniform_real() {
   return static_cast<double>(rand()) / RAND_MAX;
 }
 
+double generate_exponentielle(double lambda) {
+  double u = generate_uniform_real();
+
+  return -1 / lambda * log(1 - u);
+}
+
 int generate_geometric(double success_prob) {
 
   srand(static_cast<unsigned int>(
@@ -34,38 +40,29 @@ int generate_geometric(double success_prob) {
 
   return x;
 }
-int generate_poisson(double mean) {
 
-  srand(static_cast<unsigned int>(
-      time(0))); // Initialisation du générateur de nombres aléatoires
+int generate_poisson(double lambda) {
 
-  double L = std::exp(-mean);
   int k = 0;
   double p = 1.0;
 
-  do {
-    k++;
-    double u = generate_uniform_real(); // génère un nombre aléatoire suivant
-                                        // une loi uniforme
+  while (p > exp(-lambda)) {
+    double u = generate_uniform_real();
     p *= u;
-  } while (p >= L);
+    k++;
+  }
 
   return k - 1;
 }
 
 double generate_gamma(double alpha, double beta) {
-  srand(static_cast<unsigned int>(
-      time(0))); // Initialisation du générateur de nombres aléatoires
-
-  // méthode de la somme de variables aléatoires exponentielles
   double sum = 0.0;
-  for (int i = 0; i < alpha; ++i) {
-    double u = generate_uniform_real(); // génère un nombre aléatoire suivant
-                                        // une loi uniforme
-    sum += -std::log(u);
+  for (int i = 0; i < alpha; i++) {
+    double exponential_value = generate_exponentielle(1.0 / beta);
+    sum += exponential_value;
   }
 
-  return sum / beta;
+  return sum;
 }
 
 int generate_binomial(int n, double p) {
@@ -149,12 +146,6 @@ void salle2(double success_prob, double dexterite) {
     std::cout << "Vous avez épuisé tous vos essais. Le mot était : " << word
               << std::endl;
   }
-}
-
-double generate_exponentielle(double lambda) {
-  double u = generate_uniform_real();
-
-  return -1 / lambda * log(1 - u);
 }
 
 void salle3(double alpha, double beta) {
