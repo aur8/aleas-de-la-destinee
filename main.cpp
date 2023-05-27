@@ -151,6 +151,12 @@ void salle2(double success_prob, double dexterite) {
   }
 }
 
+double generate_exponentielle(double lambda) {
+  double u = generate_uniform_real();
+
+  return -1 / lambda * log(1 - u);
+}
+
 void salle3(double alpha, double beta) {
   double regen = generate_gamma(alpha, beta);
 }
