@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/build",
+  "command": "/usr/bin/clang++  -I\"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/include\" -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14 -o CMakeFiles/aleas_de_la_destinee.dir/main.cpp.o -c \"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/main.cpp\"",
+  "file": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/main.cpp"
+},
+{
+  "directory": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/build",
+  "command": "/usr/bin/clang++  -I\"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/include\" -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14 -o CMakeFiles/aleas_de_la_destinee.dir/player.cpp.o -c \"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/player.cpp\"",
+  "file": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/player.cpp"
+},
+{
+  "directory": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/build",
+  "command": "/usr/bin/clang++  -I\"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/include\" -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++14 -o CMakeFiles/aleas_de_la_destinee.dir/proba.cpp.o -c \"/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/proba.cpp\"",
+  "file": "/Users/aureliendroissart/Documents/IMAC/aleas de la destinee/proba.cpp"
+}
+]

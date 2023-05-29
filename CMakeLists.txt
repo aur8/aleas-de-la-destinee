@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.24)
 project(aleas_de_la_destinee)
 
 set(CMAKE_CXX_STANDARD 14)

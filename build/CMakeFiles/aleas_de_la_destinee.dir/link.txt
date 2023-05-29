@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/aleas_de_la_destinee.dir/main.cpp.o CMakeFiles/aleas_de_la_destinee.dir/player.cpp.o CMakeFiles/aleas_de_la_destinee.dir/proba.cpp.o -o aleas_de_la_destinee 
