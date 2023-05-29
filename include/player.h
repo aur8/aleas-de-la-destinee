@@ -5,28 +5,31 @@
 class Player {
 
 public:
+  std::string m_name = "Player";
 
-    std::string m_name = "Player";
+  int m_str = 0;
+  int m_dex = 0;
+  int m_con = 0;
+  int m_hp = 0;
+  unsigned int m_gold;
+  bool m_isDone = false;
+  std::string m_ability_state;
 
-    int m_str = 0;
-    int m_dex = 0;
-    int m_con = 0;
-    int m_hp = 0;
-    unsigned int m_gold;
-    bool m_isDone = false;
+  enum AbilityState { STATE_FORCE, STATE_DEXTERITY, STATE_CONSTITUTION };
 
-    unsigned int m_ability_points_left = 15;
+  unsigned int m_ability_points_left = 15;
 
-    Player()=default;
-    Player(int str, int dex, int con) : m_str(str), m_dex(dex), m_con(con) {};
+  Player() = default;
+  Player(int str, int dex, int con) : m_str(str), m_dex(dex), m_con(con){};
 
-    void generate_name();
-    void generate_stats();
-    void generate_hp();
+  void generate_name();
+  void generate_stats();
+  void generate_hp();
 
-    void display_abilities() const;
-    void add_value_to_ability(int &ability, const std::string& ability_name);
+  void display_abilities() const;
+  void add_value_to_ability(int &ability, const std::string &ability_name);
+
+  AbilityState getNextAbilityState(AbilityState currentState);
 };
 
-
-#endif //ALEAS_DE_LA_DESTINEE_PLAYER_H
+#endif // ALEAS_DE_LA_DESTINEE_PLAYER_H

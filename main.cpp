@@ -2,6 +2,7 @@
 #include "include/player.h"
 #include "include/rooms.h"
 #include "include/story.h"
+#include "proba.hpp"
 #include <chrono>
 #include <cmath>
 #include <iostream>
@@ -32,6 +33,12 @@ int main() {
   // double beta = 0.8; // Inverse de la moyenne de la loi gamma
   // double random_value_gamma = generate_gamma(alpha, beta);
   // std::cout << random_value_gamma << std::endl;
+
+  // // pareto
+  // double xm = 26;
+  // double alpha = 13;
+  // double random_value_pareto = generate_pareto(alpha, xm);
+  // std::cout << random_value_pareto << std::endl;
 
   while (player1.m_isDone == false) {
     salle1(player1.m_con, player1);

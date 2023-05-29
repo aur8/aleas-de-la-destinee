@@ -40,11 +40,17 @@ void salle2(Player player) {
   double success_probability = 0.25; // Probabilité de succès
 
   std::string word = "abracadabra"; // Mot à deviner
-  int attempts = generate_geometric(success_probability) -
-                 1; // Génère le nombre d'essais autorisés en lien avec une
-  // caractéristique du perso
+  int attempts = 1; // Génère le nombre d'essais autorisés en lien avec une
+                    // caractéristique du perso
 
-  int time_limit = generate_geometric((float)player.m_dex / 100);
+  double time_limit = generate_exponentielle(
+      player.m_dex /
+      100.0); // Génère le temps limite selon une loi exponentielle en fonction
+              // de la dextérité du joueur
+
+  std::cout << "Vous avez " << attempts
+            << " essai(s) pour écrire le mot suivant dans les " << time_limit
+            << " secondes : " << word << std::endl;
 
   std::cout << "Vous avez " << attempts
             << " essai(s) pour écrire le mot suivant dans les " << time_limit
@@ -156,7 +162,7 @@ void salle3(Player &player, int value) {
   std::cout << "Tous les ennemis ont été vaincus ! Vous pouvez passer à la "
                "salle suivante."
             << std::endl;
-  salle4(enemies_nb, (enemies_nb * 2.) / 10, player);
+  salle4(value, (value * 2.) / 10, player);
 }
 
 void salle4(double alpha, double beta, Player &player) {
@@ -197,13 +203,13 @@ void salle5(double mu, double b, Player &player) {
 
   // Interaction avec le joueur pour déterminer la valeur de 'xm' pour la salle
   // suivante
-  std::cout << "Choisissez la valeur de 'xm' pour la salle suivante (entre "
-               "10.0 et 50.0) : ";
-  double xm;
-  std::cin >> xm;
-  // Vérification des limites pour 'xm'
-  xm = std::max(10.0, std::min(50.0, xm));
-
+  // std::cout << "Choisissez la valeur de 'xm' pour la salle suivante (entre "
+  //              "10.0 et 50.0) : ";
+  // double xm;
+  // std::cin >> xm;
+  // // Vérification des limites pour 'xm'
+  // xm = std::max(10.0, std::min(50.0, xm));
+  double xm = player.m_hp;
   salle6(1.5, xm,
          player); // Appel de la salle 6 avec 'xm' déterminé par le joueur
 }
