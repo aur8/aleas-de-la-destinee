@@ -13,9 +13,6 @@ public:
   int m_hp = 0;
   unsigned int m_gold;
   bool m_isDone = false;
-  std::string m_ability_state;
-
-  enum AbilityState { STATE_FORCE, STATE_DEXTERITY, STATE_CONSTITUTION };
 
   unsigned int m_ability_points_left = 15;
 
@@ -28,8 +25,6 @@ public:
 
   void display_abilities() const;
   void add_value_to_ability(int &ability, const std::string &ability_name);
-
-  AbilityState getNextAbilityState(AbilityState currentState);
 };
 
 #endif // ALEAS_DE_LA_DESTINEE_PLAYER_H
