@@ -35,13 +35,13 @@ int main() {
   double random_value_gamma = generate_gamma(alpha, beta);
   std::cout << random_value_gamma << std::endl;
 
-  // SALLE 2
 
-
-  while (isFinished == false){
+  while (player1.m_isDone == false){
       salle1(4, player1);
-
   }
+
+  std::cout << "Vous ressortez du donjon, riche de " << player1.m_gold << " pièces d'or..." << std::endl;
+  std::cout << "Fin du jeu." << std::endl;
 
   return 0;
 }

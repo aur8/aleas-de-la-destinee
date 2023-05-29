@@ -9,6 +9,8 @@ void salle1(double lambda, Player player);
 void salle2(Player player);
 void salle3(Player& player, int value);
 void salle4(double alpha, double beta, Player& player);
+void salle5(double mu, double b, Player& player);
+void salle6(double alpha, double xm, Player& player);
 
 struct Enemy {
     int health;
@@ -156,7 +158,47 @@ void salle4(double alpha, double beta, Player& player) {
     player.m_hp += static_cast<int>(regen); // Ajouter les points de vie régénérés
 
     std::cout << "Points de vie actuels : " << player.m_hp << std::endl << std::endl;
+
+    std::cout << "Choisissez la valeur de 'b' pour la salle suivante (entre 1.0 et 5.0) : ";
+    double b;
+    std::cin >> b;
+    // Vérification des limites pour 'b'
+    b = std::max(1.0, std::min(5.0, b));
+
+    salle5(5.0, b, player); // Appel de la salle 5 avec 'b' déterminé par le joueur
 }
 
+void salle5(double mu, double b, Player& player) {
+    double damage = generate_laplace(mu, b);
+    std::cout << "Vous entrez dans une salle piégée ! Vous subissez " << damage << " dégât(s) !" << std::endl;
+    player.m_hp -= static_cast<int>(damage); // Réduire les points de vie du joueur
+
+    if (player.m_hp <= 0) {
+        std::cout << "Vous avez été vaincu..." << std::endl;
+        return; // Sortir de la salle
+    }
+
+    std::cout << "Points de vie actuels : " << player.m_hp << std::endl << std::endl;
+    // Interactions avec le joueur dans la salle (par exemple, choix d'actions)
+
+    // Interaction avec le joueur pour déterminer la valeur de 'xm' pour la salle suivante
+    std::cout << "Choisissez la valeur de 'xm' pour la salle suivante (entre 10.0 et 50.0) : ";
+    double xm;
+    std::cin >> xm;
+    // Vérification des limites pour 'xm'
+    xm = std::max(10.0, std::min(50.0, xm));
+
+    salle6(1.5, xm, player); // Appel de la salle 6 avec 'xm' déterminé par le joueur
+}
+
+void salle6(double alpha, double xm, Player& player) {
+    double reward = generate_pareto(alpha, xm);
+    std::cout << "Vous trouvez un trésor ! Vous obtenez " << reward << " pièces d'or." << std::endl;
+    player.m_gold += reward;
+
+    std::cout << "Récompense actuelle : " << player.m_gold << std::endl << std::endl;
+
+    player.m_isDone = true;
+}
 
 #endif //ALEAS_DE_LA_DESTINEE_ROOMS_H

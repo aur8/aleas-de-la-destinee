@@ -12,6 +12,8 @@ public:
     int m_dex = 0;
     int m_con = 0;
     int m_hp = 0;
+    unsigned int m_gold;
+    bool m_isDone = false;
 
     unsigned int m_ability_points_left = 15;
 
