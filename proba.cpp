@@ -51,3 +51,45 @@ double generate_gamma(double alpha, double beta) {
 
   return sum / beta;
 }
+
+
+int generate_binomial(int n, double p) {
+    double u = generate_uniform_real(); // génère un nombre aléatoire suivant
+    // une loi uniforme
+
+    int count = 0;
+    // méthode de Bernoulli en effectuant des tirages aléatoires répétés avec une
+    // probabilité de succès donnée
+    for (int i = 0; i < n; ++i) {
+        if (u < p) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+double generate_laplace(double mu, double b) {
+
+    double u = generate_uniform_real();
+    ; // Génère un nombre aléatoire entre 0 et 1
+
+    if (u < 0.5) {
+        return mu + b * std::log(2.0 * u);
+    } else {
+        return mu - b * std::log(2.0 * (1.0 - u));
+    }
+}
+
+double generate_pareto(double alpha, double xm) {
+
+    double u = generate_uniform_real(); // Génère un nombre aléatoire entre 0 et 1
+
+    return xm * std::pow(1.0 - u, -1.0 / alpha);
+}
+
+double generate_exponentielle(double lambda) {
+    double u = generate_uniform_real();
+
+    return -1 / lambda * log(1 - u);
+}

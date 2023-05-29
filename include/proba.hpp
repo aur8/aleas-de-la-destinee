@@ -10,3 +10,5 @@ double generate_uniform_real();
 int generate_geometric(double success_prob);
 int generate_poisson(double mean);
 double generate_gamma(double alpha, double beta);
+double generate_exponentielle(double lambda);
+int generate_binomial(int n, double p);
